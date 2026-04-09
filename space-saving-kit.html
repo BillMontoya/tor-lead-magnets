@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Space-Saving Starter Kit — The Organizing Recipe</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral: #FF7B5F;
+    --coral-light: #FFE8E3;
+    --navy: #26447D;
+    --navy-light: #E8EDF7;
+    --blue: #0084DD;
+    --cream: #FDF5ED;
+    --dark: #1A1A2E;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    padding: 72px 24px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: rgba(255,123,95,0.15);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(0,132,221,0.1);
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--coral);
+    color: white;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 58px);
+    color: white;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 em {
+    color: var(--coral);
+    font-style: italic;
+  }
+
+  .hero p {
+    font-size: 17px;
+    color: rgba(255,255,255,0.75);
+    max-width: 520px;
+    margin: 0 auto 40px;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* STATS */
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    margin-top: 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat {
+    text-align: center;
+    padding: 0 32px;
+    border-right: 1px solid rgba(255,255,255,0.15);
+  }
+  .stat:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    color: var(--coral);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 6px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+  }
+
+  /* INTRO SECTION */
+  .intro {
+    padding: 64px 24px;
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 16px;
+  }
+
+  .intro h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4vw, 36px);
+    color: var(--navy);
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .intro p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  /* LORENA NOTE */
+  .lorena-note {
+    background: white;
+    border-left: 4px solid var(--coral);
+    border-radius: 0 12px 12px 0;
+    padding: 28px 32px;
+    max-width: 640px;
+    margin: 0 auto 64px;
+    position: relative;
+  }
+
+  .lorena-note p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--navy);
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+
+  .lorena-note .sig {
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-size: 13px;
+    color: var(--coral);
+    font-weight: 500;
+  }
+
+  /* TOOLS SECTION */
+  .tools-section {
+    background: var(--navy);
+    padding: 72px 24px;
+  }
+
+  .tools-section .section-label { color: var(--coral); }
+  .tools-section h2 { color: white; }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 4vw, 34px);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .section-header p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 300;
+  }
+
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .tool-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 28px 24px;
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  .tool-card:hover {
+    transform: translateY(-3px);
+    background: rgba(255,255,255,0.1);
+  }
+
+  .tool-num {
+    display: inline-block;
+    background: var(--coral);
+    color: white;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 100px;
+    margin-bottom: 14px;
+    letter-spacing: 0.06em;
+  }
+
+  .tool-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  .tool-card p {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.65;
+    font-weight: 300;
+    margin-bottom: 14px;
+  }
+
+  .pro-tip {
+    background: rgba(255,123,95,0.15);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: var(--coral);
+    line-height: 1.5;
+  }
+
+  .pro-tip strong { font-weight: 500; }
+
+  .use-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+  }
+
+  .use-tag {
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.5);
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  /* METHOD SECTION */
+  .method-section {
+    padding: 72px 24px;
+    background: var(--cream);
+  }
+
+  .method-section .section-header h2 { color: var(--navy); }
+  .method-section .section-header p { color: #777; }
+
+  .ingredients {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .ingredient {
+    background: white;
+    border-radius: 16px;
+    padding: 28px 28px 28px 24px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    border-left: 5px solid var(--coral);
+    transition: transform 0.2s;
+  }
+
+  .ingredient:nth-child(2) { border-left-color: var(--navy); }
+  .ingredient:nth-child(3) { border-left-color: var(--blue); }
+  .ingredient:nth-child(4) { border-left-color: var(--coral); }
+  .ingredient:nth-child(5) { border-left-color: var(--navy); }
+
+  .ingredient:hover { transform: translateX(4px); }
+
+  .ing-num {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--coral);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .ingredient:nth-child(2) .ing-num { background: var(--navy); }
+  .ingredient:nth-child(3) .ing-num { background: var(--blue); }
+  .ingredient:nth-child(4) .ing-num { background: var(--coral); }
+  .ingredient:nth-child(5) .ing-num { background: var(--navy); }
+
+  .ing-body { flex: 1; }
+
+  .ing-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 4px;
+  }
+
+  .ingredient:nth-child(2) .ing-label { color: var(--navy); }
+  .ingredient:nth-child(3) .ing-label { color: var(--blue); }
+
+  .ing-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .ing-body p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+
+  .ing-question {
+    font-size: 13px;
+    color: var(--coral);
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* CHECKLIST SECTION */
+  .checklist-section {
+    background: white;
+    padding: 72px 24px;
+  }
+
+  .checklist-section .section-header h2 { color: var(--navy); }
+  .checklist-section .section-header p { color: #777; }
+
+  .checklist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .checklist-card {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #eee;
+  }
+
+  .checklist-header {
+    background: var(--navy);
+    padding: 14px 20px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  .checklist-card:nth-child(2) .checklist-header { background: var(--coral); }
+  .checklist-card:nth-child(3) .checklist-header { background: var(--blue); }
+  .checklist-card:nth-child(4) .checklist-header { background: var(--dark); }
+
+  .checklist-items {
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13.5px;
+    color: #444;
+    line-height: 1.5;
+    font-weight: 300;
+    cursor: pointer;
+  }
+
+  .check-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--coral);
+    flex-shrink: 0;
+    margin-top: 2px;
+    cursor: pointer;
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: var(--coral);
+    padding: 80px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 46px);
+    color: white;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+    line-height: 1.2;
+  }
+
+  .cta-section p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.85);
+    max-width: 480px;
+    margin: 0 auto 40px;
+    line-height: 1.65;
+    font-weight: 300;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-primary {
+    background: white;
+    color: var(--coral);
+    padding: 16px 36px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: white;
+    padding: 16px 36px;
+    border-radius: 100px;
+    border: 2px solid rgba(255,255,255,0.6);
+    font-size: 15px;
+    font-weight: 400;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+    border-color: white;
+  }
+
+  /* SERVICES */
+  .services-section {
+    background: var(--navy);
+    padding: 64px 24px;
+    text-align: center;
+  }
+
+  .services-section .section-label { color: var(--coral); }
+
+  .services-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3vw, 30px);
+    color: white;
+    margin-bottom: 40px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    max-width: 800px;
+    margin: 0 auto 40px;
+  }
+
+  .service-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 22px 18px;
+    text-align: left;
+  }
+
+  .service-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--coral);
+    margin-bottom: 6px;
+  }
+
+  .service-desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .service-hrs {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    margin-top: 8px;
+    font-weight: 300;
+  }
+
+  .btn-book {
+    background: var(--coral);
+    color: white;
+    padding: 16px 40px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  .btn-book:hover { transform: translateY(-2px); opacity: 0.9; }
+
+  .virtual-note {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 16px;
+    font-weight: 300;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--dark);
+    padding: 28px 24px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: white;
+    margin-bottom: 6px;
+  }
+
+  .footer p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    font-weight: 300;
+  }
+
+  .footer a {
+    color: var(--coral);
+    text-decoration: none;
+  }
+
+  /* SPOON DIVIDER */
+  .spoon-divider {
+    text-align: center;
+    padding: 8px 0;
+    font-size: 18px;
+    color: var(--coral);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .stats { gap: 24px; }
+    .stat { border-right: none; padding: 0 20px; }
+    .ingredient { flex-direction: column; gap: 12px; }
+    .lorena-note { margin: 0 16px 48px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🥄 Free Resource — The Organizing Recipe</div>
+  <h1>The <em>Space-Saving</em><br>Starter Kit</h1>
+  <p>5 smart tools + the simple method behind them. Because you don't need a bigger home — you need a better system.</p>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">120+</div>
+      <div class="stat-label">pieces packed</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2</div>
+      <div class="stat-label">tiny bags</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1</div>
+      <div class="stat-label">suitcase</div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="section-label">A note from Lorena</div>
+  <h2>Space is never the real problem.</h2>
+  <p>In 10 years organizing homes across Denver, I've learned one truth: the problem is never the space itself — it's the system. Or the lack of one. This guide gives you both: the tools I actually use with my clients, and the method behind them.</p>
+</section>
+
+<div class="lorena-note" style="max-width:640px; margin: 0 auto 64px; padding: 28px 32px;">
+  <p>"I created this guide because space is something everyone says they don't have enough of. But in every home I've organized, the space was always there. We just had to make it work smarter."</p>
+  <span class="sig">— Lorena Duarte, Founder of The Organizing Recipe</span>
+</div>
+
+<!-- TOOLS -->
+<section class="tools-section">
+  <div class="section-header">
+    <div class="section-label">The toolkit</div>
+    <h2>5 Tools That Changed How I Organize</h2>
+    <p>Real, affordable, game-changing. These are my go-to recommendations for every client.</p>
+  </div>
+
+  <div class="tools-grid">
+    <div class="tool-card">
+      <div class="tool-num">01</div>
+      <h3>Vacuum Compression Bags</h3>
+      <p>The #1 closet transformer. 120+ pieces of clothing into two tiny bags — that's the power of smart compression. Perfect for moving, seasonal swaps, and bulky bedding.</p>
+      <div class="pro-tip"><strong>Pro tip:</strong> Roll instead of fold — you'll fit even more and avoid wrinkles.</div>
+      <div class="use-tags">
+        <span class="use-tag">Seasonal clothes</span>
+        <span class="use-tag">Guest bedding</span>
+        <span class="use-tag">Moving</span>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-num">02</div>
+      <h3>Clear Stackable Bins</h3>
+      <p>When you can see everything, you stop buying duplicates. Visual systems reduce decision fatigue and save money. Your pantry will never be the same.</p>
+      <div class="pro-tip"><strong>Pro tip:</strong> Label the front AND the top — you'll thank yourself when they're stacked.</div>
+      <div class="use-tags">
+        <span class="use-tag">Pantry</span>
+        <span class="use-tag">Under-bed</span>
+        <span class="use-tag">Closet shelves</span>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-num">03</div>
+      <h3>Slim Velvet Hangers</h3>
+      <p>Switching to slim hangers alone can free up 30–40% of your closet rod. That's almost half your closet back — without removing a single item.</p>
+      <div class="pro-tip"><strong>Pro tip:</strong> Face all hangers the same direction. After wearing, flip it. Edit what never flips.</div>
+      <div class="use-tags">
+        <span class="use-tag">Every closet</span>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-num">04</div>
+      <h3>Over-the-Door Organizer</h3>
+      <p>The most underused space in any home is the back of the door. Stop ignoring it — claim those square feet.</p>
+      <div class="pro-tip"><strong>Pro tip:</strong> Use one in the pantry for snacks and spices. Total game changer.</div>
+      <div class="use-tags">
+        <span class="use-tag">Bathroom</span>
+        <span class="use-tag">Pantry</span>
+        <span class="use-tag">Laundry</span>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-num">05</div>
+      <h3>Drawer Dividers</h3>
+      <p>Chaos lives in drawers. Dividers end the "junk drawer" era for good and create systems that actually stick.</p>
+      <div class="pro-tip"><strong>Pro tip:</strong> Start with the kitchen. One organized drawer creates momentum for the whole home.</div>
+      <div class="use-tags">
+        <span class="use-tag">Kitchen</span>
+        <span class="use-tag">Bedroom</span>
+        <span class="use-tag">Office</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="method-section">
+  <div class="section-header">
+    <div class="section-label">The Organizing Recipe Method</div>
+    <h2>The System Behind Every Organized Home</h2>
+    <p>Tools without a method are just more stuff. Here's how I approach every single project.</p>
+  </div>
+
+  <div class="ingredients">
+    <div class="ingredient">
+      <div class="ing-num">1</div>
+      <div class="ing-body">
+        <div class="ing-label">Ingredient #1</div>
+        <h3>Edit with Intention</h3>
+        <p>Before any bin, bag, or label — we decide what stays. Not based on guilt or "someday," but on your real life today. This step alone changes everything.</p>
+        <div class="ing-question">"Does this serve the life I'm actually living?"</div>
+      </div>
+    </div>
+
+    <div class="ingredient">
+      <div class="ing-num">2</div>
+      <div class="ing-body">
+        <div class="ing-label">Ingredient #2</div>
+        <h3>Categorize Clearly</h3>
+        <p>Like items live together. Always. When your brain knows where to look, it stops feeling overwhelmed. Categories create calm.</p>
+        <div class="ing-question">"Would someone else know where this goes?"</div>
+      </div>
+    </div>
+
+    <div class="ingredient">
+      <div class="ing-num">3</div>
+      <div class="ing-body">
+        <div class="ing-label">Ingredient #3</div>
+        <h3>Contain Smartly</h3>
+        <p>Now we bring in the tools. But only after steps 1 and 2. Organizing chaos just hides it. This step makes it beautiful AND functional.</p>
+        <div class="ing-question">"Can I see it, reach it, and return it easily?"</div>
+      </div>
+    </div>
+
+    <div class="ingredient">
+      <div class="ing-num">4</div>
+      <div class="ing-body">
+        <div class="ing-label">Ingredient #4</div>
+        <h3>Label Everything</h3>
+        <p>Labels aren't just for Type-A personalities. They're instructions for your future self — and everyone else in the house. No more "where does this go?"</p>
+        <div class="ing-question">"Will this still make sense in 6 months?"</div>
+      </div>
+    </div>
+
+    <div class="ingredient">
+      <div class="ing-num">5</div>
+      <div class="ing-body">
+        <div class="ing-label">Ingredient #5</div>
+        <h3>Maintain the System</h3>
+        <p>Organization isn't a one-time event. It's a 5-minute daily habit. The homes that stay organized aren't the ones that never get messy — they reset quickly.</p>
+        <div class="ing-question">"What's my 5-minute reset routine?"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKLIST -->
+<section class="checklist-section">
+  <div class="section-header">
+    <div class="section-label">Your action step</div>
+    <h2>10-Minute Space Audit</h2>
+    <p>Walk through your home with this checklist. Check what applies — this is your starting point.</p>
+  </div>
+
+  <div class="checklist-grid">
+    <div class="checklist-card">
+      <div class="checklist-header">Closet</div>
+      <div class="checklist-items">
+        <label class="check-item"><input type="checkbox"> Can you see everything hanging in your closet?</label>
+        <label class="check-item"><input type="checkbox"> Are seasonal items taking up prime space?</label>
+        <label class="check-item"><input type="checkbox"> Do you have items untouched for 12+ months?</label>
+        <label class="check-item"><input type="checkbox"> Is your bedding stored efficiently?</label>
+        <label class="check-item"><input type="checkbox"> Is there a dedicated spot for bags and shoes?</label>
+      </div>
+    </div>
+
+    <div class="checklist-card">
+      <div class="checklist-header">Kitchen</div>
+      <div class="checklist-items">
+        <label class="check-item"><input type="checkbox"> Can you see everything in your pantry at a glance?</label>
+        <label class="check-item"><input type="checkbox"> Are expired or duplicate items taking shelf space?</label>
+        <label class="check-item"><input type="checkbox"> Do your drawers have a clear system?</label>
+        <label class="check-item"><input type="checkbox"> Is your counter clear for actual cooking?</label>
+        <label class="check-item"><input type="checkbox"> Do you have a landing zone for incoming items?</label>
+      </div>
+    </div>
+
+    <div class="checklist-card">
+      <div class="checklist-header">Bedroom</div>
+      <div class="checklist-items">
+        <label class="check-item"><input type="checkbox"> Is under the bed used intentionally?</label>
+        <label class="check-item"><input type="checkbox"> Are your nightstand drawers functional?</label>
+        <label class="check-item"><input type="checkbox"> Do you have a morning routine that resets the room?</label>
+        <label class="check-item"><input type="checkbox"> Are all hangers facing the same direction?</label>
+        <label class="check-item"><input type="checkbox"> Is there anything that belongs somewhere else?</label>
+      </div>
+    </div>
+
+    <div class="checklist-card">
+      <div class="checklist-header">General</div>
+      <div class="checklist-items">
+        <label class="check-item"><input type="checkbox"> Do you have a junk drawer that never gets resolved?</label>
+        <label class="check-item"><input type="checkbox"> Are you keeping things out of guilt?</label>
+        <label class="check-item"><input type="checkbox"> Is there a space that causes you daily stress?</label>
+        <label class="check-item"><input type="checkbox"> Do you regularly buy things you already own?</label>
+        <label class="check-item"><input type="checkbox"> Could a professional session save you time and money?</label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready to transform<br>your space?</h2>
+  <p>This guide is just the beginning. If you want a plan built specifically for your home — let's talk. No pressure. No pitch. Just a real conversation about your space.</p>
+  <div class="cta-buttons">
+    <a href="https://www.theorganizingrecipe.com/book-online" target="_blank" class="btn-primary">Book Your Free 15-Min Call</a>
+    <a href="https://www.instagram.com/theorganizingrecipe" target="_blank" class="btn-secondary">Follow on Instagram</a>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section">
+  <div class="section-label">Our services</div>
+  <h2>Ready when you are.</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-name">Mini Reset</div>
+      <div class="service-desc">One space, quick win, immediate calm.</div>
+      <div class="service-hrs">4 hours · Denver, CO</div>
+    </div>
+    <div class="service-card">
+      <div class="service-name">Room Revival</div>
+      <div class="service-desc">One full room, real transformation.</div>
+      <div class="service-hrs">8 hours · Denver, CO</div>
+    </div>
+    <div class="service-card">
+      <div class="service-name">Home Harmony</div>
+      <div class="service-desc">Multiple spaces, complete flow.</div>
+      <div class="service-hrs">16 hours · Denver, CO</div>
+    </div>
+    <div class="service-card">
+      <div class="service-name">Home Reset</div>
+      <div class="service-desc">Full home transformation.</div>
+      <div class="service-hrs">24 hours · Denver, CO</div>
+    </div>
+  </div>
+  <a href="https://www.theorganizingrecipe.com/book-online" target="_blank" class="btn-book">Book a Consultation</a>
+  <p class="virtual-note">Virtual consulting available nationwide 🌎</p>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">The Organizing Recipe 🥄</div>
+  <p>Denver, CO · <a href="https://www.theorganizingrecipe.com" target="_blank">theorganizingrecipe.com</a> · <a href="https://www.instagram.com/theorganizingrecipe" target="_blank">@theorganizingrecipe</a></p>
+</footer>
+
+</body>
+</html>
